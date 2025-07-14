@@ -1,16 +1,16 @@
 transformers #to deal with hugging face models
 transformers[sentencepiece]
 datasets
-sacreblue
+sacrebleu
 rouge_score
-py7r
+py7zr
 pandas
 nltk
 tqdm
 PyYAML
 matplotlib
-#torch
-torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 #The Gpu version
+torch
+#torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 #The Gpu version
 notebook
 boto3
 mypy-boto3-s3
