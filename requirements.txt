@@ -1,0 +1,23 @@
+transformers #to deal with hugging face models
+transformers[sentencepiece]
+datasets
+sacreblue
+rouge_score
+py7r
+pandas
+nltk
+tqdm
+PyYAML
+matplotlib
+#torch
+torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 #The Gpu version
+notebook
+boto3
+mypy-boto3-s3
+python-box==6.0.2
+ensure==1.0.2
+fastapi==0.78.0
+uvicorn==0.18.3
+jinja2==3.1.2
+-e . #put the project in editable mode, which means it can be used as a package and import using pip.
+     #It's combined with the setup file where you indicate what, how and where python should do to run your package
