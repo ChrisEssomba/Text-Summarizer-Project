@@ -4,7 +4,7 @@ import logging # log all the information (in real time)
 
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: %(message)s:') #show the ascii time and message
 
-project_name = "textSummarier"
+project_name = "textSummarizer"
 
 list_of_files = [
     ".github.com/workflows/.gitkeep", #This one is important for the CI/CD deployment
@@ -18,7 +18,7 @@ list_of_files = [
     f"src/{project_name}/pipeline/__init__.py",
     f"src/{project_name}/entity/__init__.py",
     f"src/{project_name}/constants/__init__.py",
-    "config/congig.yaml", 
+    "config/config.yaml", 
     "params.yaml", 
     "app.py", 
     "main.py", 
