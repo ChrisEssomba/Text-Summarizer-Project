@@ -1,0 +1,9 @@
+artifacts_root: artifacts #set the path where to store all the output data
+
+#We define the url to store the dataset from an url
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://github.com/ChrisEssomba/Text-Summarizer-Project/raw/refs/heads/main/summarizer-data.zip
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
