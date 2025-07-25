@@ -1,3 +1,5 @@
+#IN THIS FILE WE WRITE THE METHODS THAT WE WANT TO PERFORM WITH THAT ENTITY, IT'S WHERE WE BUILD
+
 import os 
 from pathlib import Path
 import urllib.request as request

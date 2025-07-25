@@ -1,3 +1,4 @@
+#WE DEFINE A MAIN METHOD TO EXECUTE THE FUNCTIONS CREATE IN THE COMPONENT FILE
 from textSummarizer.components.data_ingestion import DataIngestion
 from textSummarizer.config.configuration import ConfigurationManager
 from textSummarizer.constants import *
