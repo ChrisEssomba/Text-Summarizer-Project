@@ -2,7 +2,27 @@ import streamlit as st
 import os
 import time
 from datetime import datetime
+
+from transformers import AutoTokenizer
+from transformers import pipeline
 from textSummarizer.pipeline.prediction import PredictionPipeline
+
+#prediction method
+def predict(text):
+        
+    tokenizer = AutoTokenizer.from_pretrained("artifacts/model_trainer/tokenizer")
+    gen_kwargs = {"length_penalty": 0.8, "num_beams":8, "max_length": 128}
+
+    pipe = pipeline("summarization", model="artifacts/model_trainer/pegasus-samsum-model",tokenizer=tokenizer)
+
+    print("Dialogue:")
+    print(text)
+
+    output = pipe(text, **gen_kwargs)[0]["summary_text"]
+    print("\nModel Summary:")
+    print(output)
+    return output
+
 
 # App configuration
 st.set_page_config(
@@ -86,8 +106,10 @@ with tab1:
             
             try:
                 # Call your prediction pipeline
-                predictor = PredictionPipeline()
-                summary = predictor.predict(input_text)
+                #predictor = PredictionPipeline()
+                #summary = predictor.predict(input_text)
+                
+                summary = predict(input_text)
                 
                 processing_time = time.time() - start_time
                 
