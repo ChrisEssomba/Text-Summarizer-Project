@@ -2,15 +2,42 @@ import streamlit as st
 import os
 import time
 from datetime import datetime
-
-from transformers import AutoTokenizer
-from transformers import pipeline
 from textSummarizer.pipeline.prediction import PredictionPipeline
+from transformers import pipeline, AutoTokenizer
+from huggingface_hub import login
 
+# Authenticate (uses st.secrets in deployment)
+login(token=st.secrets["HUGGINGFACE_TOKEN"])
+
+@st.cache_resource  # Cache to avoid reloading
+def load_model():
+    model_name = "Chrisus3/text-summarizer"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    pipe = pipeline("summarization", model=model_name, tokenizer=tokenizer)
+    return pipe
+
+
+pipe = load_model()
+
+def predict(text):
+    gen_kwargs = {"length_penalty": 0.8, "num_beams": 8, "max_length": 128}
+    output = pipe(text, **gen_kwargs)[0]["summary_text"]
+    return output
+
+
+"""
 #prediction method
 def predict(text):
-        
+    
+    # Load local tokenizer
     tokenizer = AutoTokenizer.from_pretrained("artifacts/model_trainer/tokenizer")
+
+    # Push to Hugging Face Hub
+    tokenizer.push_to_hub("Chrisus3/text-summarizer")
+    
+    tokenizer = AutoTokenizer.from_pretrained("Chrisus3/text-summarizer")
+        
+    #tokenizer = AutoTokenizer.from_pretrained("artifacts/model_trainer/tokenizer")
     gen_kwargs = {"length_penalty": 0.8, "num_beams":8, "max_length": 128}
 
     pipe = pipeline("summarization", model="artifacts/model_trainer/pegasus-samsum-model",tokenizer=tokenizer)
@@ -23,7 +50,7 @@ def predict(text):
     print(output)
     return output
 
-
+"""
 # App configuration
 st.set_page_config(
     page_title="AI Text Summarizer",
