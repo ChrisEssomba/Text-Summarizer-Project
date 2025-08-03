@@ -25,32 +25,7 @@ def predict(text):
     return output
 
 
-"""
-#prediction method
-def predict(text):
-    
-    # Load local tokenizer
-    tokenizer = AutoTokenizer.from_pretrained("artifacts/model_trainer/tokenizer")
 
-    # Push to Hugging Face Hub
-    tokenizer.push_to_hub("Chrisus3/text-summarizer")
-    
-    tokenizer = AutoTokenizer.from_pretrained("Chrisus3/text-summarizer")
-        
-    #tokenizer = AutoTokenizer.from_pretrained("artifacts/model_trainer/tokenizer")
-    gen_kwargs = {"length_penalty": 0.8, "num_beams":8, "max_length": 128}
-
-    pipe = pipeline("summarization", model="artifacts/model_trainer/pegasus-samsum-model",tokenizer=tokenizer)
-
-    print("Dialogue:")
-    print(text)
-
-    output = pipe(text, **gen_kwargs)[0]["summary_text"]
-    print("\nModel Summary:")
-    print(output)
-    return output
-
-"""
 # App configuration
 st.set_page_config(
     page_title="AI Text Summarizer",
